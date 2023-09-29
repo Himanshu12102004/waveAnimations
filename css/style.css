@@ -192,3 +192,9 @@ sup {
   justify-content: center;
   gap: 30px;
 }
+.disable {
+  color: #626262 !important;
+}
+.disable:hover {
+  background-color: #292929 !important;
+}

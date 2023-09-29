@@ -78,47 +78,47 @@ document.querySelector("#pow").addEventListener("click", () => {
   backSpace.programmer.push(topIndex.programmer);
 });
 //INVERSE
-document.querySelector("#inv").addEventListener("click", () => {
-  let logTrigo = document.querySelectorAll(".lt");
-  let invT = document.querySelectorAll(".invT");
+// document.querySelector("#inv").addEventListener("click", () => {
+//   let logTrigo = document.querySelectorAll(".lt");
+//   let invT = document.querySelectorAll(".invT");
 
-  if (!isInv) {
-    document.querySelector("#inv").classList.toggle("activated");
-    isInv = true;
-    // let invTrigo=
-    logTrigo.forEach((elem) => {
-      if (elem.id === "log") {
-        elem.innerHTML = "";
-        elem.insertAdjacentHTML("beforeend", "10<sup>x</sup>");
-      } else {
-        elem.innerHTML = "";
-        elem.insertAdjacentHTML(`beforeend`, `${elem.id}<sup>-1</sup>`);
-      }
-    });
-    invT.forEach((elem) => {
-      elem.innerHTML = "";
-      elem.insertAdjacentHTML(`beforeend`, `${elem.id}<sup>-1</sup>`);
-    });
-  } else {
-    document.querySelector("#inv").classList.toggle("activated");
-    isInv = false;
-    logTrigo.forEach((elem) => {
-      if (elem.id === "log") {
-        elem.innerHTML = "";
-        elem.insertAdjacentHTML("beforeend", "log");
-      } else {
-        elem.innerHTML = "";
-        elem.insertAdjacentHTML(`beforeend`, `${elem.id}`);
-      }
-    });
+//   if (!isInv) {
+//     document.querySelector("#inv").classList.toggle("activated");
+//     isInv = true;
+//     // let invTrigo=
+//     logTrigo.forEach((elem) => {
+//       if (elem.id === "log") {
+//         elem.innerHTML = "";
+//         elem.insertAdjacentHTML("beforeend", "10<sup>x</sup>");
+//       } else {
+//         elem.innerHTML = "";
+//         elem.insertAdjacentHTML(`beforeend`, `${elem.id}<sup>-1</sup>`);
+//       }
+//     });
+//     invT.forEach((elem) => {
+//       elem.innerHTML = "";
+//       elem.insertAdjacentHTML(`beforeend`, `${elem.id}<sup>-1</sup>`);
+//     });
+//   } else {
+//     document.querySelector("#inv").classList.toggle("activated");
+//     isInv = false;
+//     logTrigo.forEach((elem) => {
+//       if (elem.id === "log") {
+//         elem.innerHTML = "";
+//         elem.insertAdjacentHTML("beforeend", "log");
+//       } else {
+//         elem.innerHTML = "";
+//         elem.insertAdjacentHTML(`beforeend`, `${elem.id}`);
+//       }
+//     });
 
-    invT.forEach((elem) => {
-      elem.innerHTML = "";
-      elem.insertAdjacentHTML(`beforeend`, `${elem.id}`);
-    });
-  }
-  console.log(isInv);
-});
+//     invT.forEach((elem) => {
+//       elem.innerHTML = "";
+//       elem.insertAdjacentHTML(`beforeend`, `${elem.id}`);
+//     });
+//   }
+//   console.log(isInv);
+// });
 //FOR x
 document.querySelector(".x").addEventListener("click", () => {
   htmlString += "x";
