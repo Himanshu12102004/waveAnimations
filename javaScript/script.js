@@ -56,7 +56,7 @@ const wave = {
   Scale_X: 100,
   Scale_Y: 100,
   y: canvas.height / 2,
-  frequency: 0.01,
+  frequency: 0.03,
 };
 const strokeColor = {
   r: 200,
