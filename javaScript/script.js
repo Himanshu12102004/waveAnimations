@@ -16,23 +16,23 @@ function getRandomColor() {
 
   return color;
 }
-// if (innerHeight < 600 || innerWidth < 700) {
-//   document.querySelector(".frosted-glass").style.display = "block";
-//   document.querySelector(".restrict").style.display = "flex";
-// } else {
-//   document.querySelector(".frosted-glass").style.display = "none";
-//   document.querySelector(".restrict").style.display = "none";
-// }
+if (innerWidth < 700) {
+  document.querySelector(".frosted-glass").style.display = "block";
+  document.querySelector(".restrict").style.display = "flex";
+} else {
+  document.querySelector(".frosted-glass").style.display = "none";
+  document.querySelector(".restrict").style.display = "none";
+}
 window.addEventListener("resize", () => {
   canvas.height = innerHeight;
   canvas.width = innerWidth;
-  // if (innerHeight < 100 || innerWidth < 100) {
-  //   document.querySelector(".frosted-glass").style.display = "block";
-  //   document.querySelector(".restrict").style.display = "flex";
-  // } else {
-  //   document.querySelector(".frosted-glass").style.display = "none";
-  //   document.querySelector(".restrict").style.display = "none";
-  // }
+  if (innerWidth < 700) {
+    document.querySelector(".frosted-glass").style.display = "block";
+    document.querySelector(".restrict").style.display = "flex";
+  } else {
+    document.querySelector(".frosted-glass").style.display = "none";
+    document.querySelector(".restrict").style.display = "none";
+  }
   // pen.clearRect(0, 0, innerWidth, innerHeight);
   // pen.lineWidth = 2;
   // pen.beginPath();
@@ -66,7 +66,7 @@ const strokeColor = {
 const waveFolder = gui.addFolder("wave");
 const strokeFolder = gui.addFolder("strokeColor");
 let h = document.querySelector(".calculator__screen__expression");
-waveFolder.add(wave, "Scale_X", -300, 300);
+waveFolder.add(wave, "Scale_X", 0, 300);
 waveFolder.add(wave, "Scale_Y", 0, innerHeight / 2 - 70);
 waveFolder.add(wave, "y", 0, canvas.height);
 waveFolder.add(wave, "frequency", 0, 1);
@@ -170,34 +170,37 @@ function animate() {
   modifedExpressions.forEach((exp, index) => {
     pen.beginPath();
     let x;
-    for (x = 0; x < innerWidth; x += 20) {
+    for (x = 0; x < innerWidth / 2; x += 1) {
       pen.lineTo(
-        x,
+        x + innerWidth / 2,
         wave.y -
           math.evaluate(eval(exp.positive)) * wave.Scale_Y * Math.sin(increment)
       );
 
       pen.stroke();
     }
-    // pen.beginPath();
-    // for (let x = 0; x < innerWidth / 2; x++) {
+    pen.beginPath();
+    for (let x = 0; x < innerWidth / 2; x += 1) {
+      pen.lineTo(
+        -x + innerWidth / 2,
+        wave.y -
+          math.evaluate(eval(exp.negative)) * wave.Scale_Y * Math.sin(increment)
+      );
+      pen.stroke();
+    }
+
+    // for (x = x - 20; x < innerWidth; x += 1) {
+    //   pen.beginPath();
+
+    //   console.log(x);
     //   pen.lineTo(
-    //     -x + innerWidth / 2,
+    //     x,
     //     wave.y -
-    //       math.evaluate(eval(exp.negative)) * wave.Scale_Y * Math.sin(increment)
+    //       math.evaluate(eval(exp.positive)) * wave.Scale_Y * Math.sin(increment)
     //   );
+
     //   pen.stroke();
     // }
-    for (x = x - 20; x < innerWidth; x += 1) {
-      console.log(x);
-      pen.lineTo(
-        x,
-        wave.y -
-          math.evaluate(eval(exp.positive)) * wave.Scale_Y * Math.sin(increment)
-      );
-
-      pen.stroke();
-    }
   });
   increment += wave.frequency;
   animationFrame = requestAnimationFrame(animate);
